@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Map with Pins</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map
+        const map = L.map('map').setView([20, 0], 2); // Center the map on the equator
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Function to add a pin
+        function addPin(lat, lng, popupText) {
+            L.marker([lat, lng]).addTo(map)
+                .bindPopup(popupText)
+                .openPopup();
+        }
+
+        // Add your locations here
+        const locations = [
+            { lat: 51.109745, lng: 16.901582, name: "Demero, Polen" },
+            { lat: 50.011989, lng: 36.220920, name: "Cominpro, Ukraine" },
+	    { lat: 33.974569, lng: -84.099491, name: "Framo Morat Inc., Vereinigte Staaten" },
+	    { lat: 32.085974, lng: 34.858449, name: "Medital Ltd, Israel" },
+	    { lat: 51.516510, lng: 7.418341, name: "AS Antriebs- und Systemtechnik GmbH, Deutschland" },
+	    { lat: 54.129356, lng: 10.640331, name: "Heinrich Wolf GmbH & Co.KG, Deutschland" },
+	    { lat: 48.736750, lng: 9.164841, name: "MÄDLER GmbH, Deutschland" },
+	    { lat: 51.177324, lng: 6.867071, name: "MÄDLER Subsidiary Düsseldorf, Deutschland" },
+	    { lat: 53.622650, lng: 10.227803, name: "MÄDLER Subsidiary Hamburg, Deutschland" },
+	    { lat: 49.812919, lng: 9.979125, name: "Max Lamb GmbH & Co. KG, Deutschland" },
+	    { lat: 53.174653, lng: 8.635150, name: "Hausmann + Haensgen GmbH & Co. KG, Deutschland" },
+	    { lat: -31.984857, lng: 116.045307, name: "Mechanical Components Pty Ltd, Australien" },
+	    { lat: 48.198032, lng: 16.343918, name: "MÄDLER Österreich GmbH, Österreich" },
+	    { lat: 29.341529, lng: 120.108814, name: "Zhuji Grob Electromechanical Co.,Ltd, China" },
+	    { lat: 55.643752, lng: 12.112126, name: "Regal A/S, Dänemark" },
+	    { lat: 60.283462, lng: 24.814452, name: "EIE Maskin Oy, Finnland" },
+	    { lat: 48.626864, lng: 1.816077, name: "Cetic, Frankreich" },
+	    { lat: 47.780938, lng: 7.229799, name: "Kübler Group, Frankreich" },
+	    { lat: 52.036752, lng: -0.335565, name: "Drive Lines Technologies Ltd., Vereinigtes Königreich" },
+	    { lat: 52.036621, lng: -0.335709, name: "R A Rodriguez, Vereinigtes Königreich" },
+	    { lat: 28.492611, lng: 77.143285, name: "Plaksa Group, Indien" },
+	    { lat: 45.504928, lng: 9.241271, name: "RISAM Srl, Italien" },
+	    { lat: 52.031715, lng: 4.651370, name: "AXIS & Stuifmeel B.V., Niederlande" },
+	    { lat: -36.945279, lng: 174.798376, name: "SAECOWilson, Neuseeland" },
+	    { lat: 59.915553, lng: 10.846912, name: "EIE Maskin AS, Norwegen" },
+	    { lat: 37.525820, lng: 126.776536, name: "Alphatec, Südkorea" },
+	    { lat: 37.380327, lng: 126.661594, name: "Signix Corp., Südkorea" },
+	    { lat: 59.262419, lng: 18.040550, name: "EIE Maskin AB, Schweden" },
+	    { lat: 47.691416, lng: 8.643337, name: "Mädler norm Antrieb AG, Schweiz" },
+	    { lat: 40.211447, lng: 28.932350, name: "Framo Morat, Türkei" },
+	    { lat: 38.315134, lng: 27.169096, name: "GENERAL Redüktör, Türkei" },
+	    { lat: 49.237814, lng: 8.899581, name: "GROB Antriebstechnik GmbH, Deutschland" },
+            // Add more locations as needed
+        ];
+
+        // Loop through locations and add pins
+        locations.forEach(location => {
+            addPin(location.lat, location.lng, location.name);
+        });
+    </script>
+</body>
+</html>
